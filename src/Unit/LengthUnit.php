@@ -6,12 +6,14 @@ use UnitConverter\Exception\NotSupportedUnitException;
 
 class LengthUnit extends AbstractUnit
 {
-    protected static $supportedUnit = [
-        Unit::CM, Unit::IN
+    public static $unitList = [
+        Unit::CM, 
+        Unit::IN,
+        Unit::FT
     ];
 
     protected static $convertUnitMap = [
-        [ self::CM => 1, self::IN => 0.393 ]
+        self::CM => '1', self::IN => '0.393', self::FT => '0.0328084'
     ];
 
     /**
@@ -21,7 +23,7 @@ class LengthUnit extends AbstractUnit
      */
     public function __construct(string $unitName)
     {
-        if (!in_array($unitName, self::$supportedUnit)) {
+        if (!in_array($unitName, self::$unitList)) {
             throw new NotSupportedUnitException($unitName);
         }
 

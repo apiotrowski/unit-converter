@@ -1,6 +1,6 @@
 <?php
 
-namespace UnitConverter;
+namespace UnitConverter\Converter;
 
 use UnitConverter\Unit\Unit;
 use UnitConverter\Value\Value;
@@ -10,9 +10,18 @@ interface Converter
     /**
      * Supported targetUnits
      *
-     * @return Unit[]
+     * @return string[]
      */
     public function supportedUnits();
+
+    /**
+     * Check if conversion is available
+     *
+     * @param Unit $sourceUnit
+     * @param Unit $targetUnit
+     * @return bool
+     */
+    public function isSupported(Unit $sourceUnit, Unit $targetUnit);
 
     /**
      * Execute conversion
