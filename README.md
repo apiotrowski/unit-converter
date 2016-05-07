@@ -25,7 +25,7 @@ $convertedValue = $convertManager->convert('10cm to ?in');
 
 In the $convertedValue it is calculated Value based on raw query string. To calculating values tool is use [BC Math library](http://php.net/manual/en/ref.bc.php). 
  
-Tool are tested in PHPUnit, so everything should work properly.
+Tool are tested in [PHPUnit](https://phpunit.de/), so everything should work properly.
 
 ## How to extend Unit Converter
 
