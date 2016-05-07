@@ -3,7 +3,6 @@
 namespace UnitConverter\Resolver;
 
 use UnitConverter\Unit\LengthUnit;
-use UnitConverter\Unit\Unit;
 use UnitConverter\Unit\UnitFactory;
 use UnitConverter\Value\Value;
 
@@ -21,15 +20,15 @@ class QueryResolverTest extends \PHPUnit_Framework_TestCase
      * @dataProvider availableQuery
      *
      * @param string $rawQuery
-     * @param Query $query
+     * @param Query $expectedQuery
      */
-    public function testResolveMethodReturnValueAndTarget(string $rawQuery, Query $query)
+    public function testResolveMethodReturnValueAndTarget(string $rawQuery, Query $expectedQuery)
     {
         $query = $this->queryResolver->resolve($rawQuery);
         $this->assertInstanceOf(Query::class, $query);
         $this->assertInstanceOf(LengthUnit::class, $query->getTargetUnit());
-
         $this->assertEquals(10, $query->getValue()->getValue());
+        $this->assertEquals($expectedQuery, $query);
     }
 
     public function availableQuery()
@@ -41,6 +40,7 @@ class QueryResolverTest extends \PHPUnit_Framework_TestCase
             [ '10 cm  to ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
             [ '10 cm to   ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
             [ '10cm to in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
+            [ '10cm  to  in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
         ];
     }
 }

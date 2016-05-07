@@ -22,7 +22,7 @@ class QueryResolver
 
         return new Query(
             new Value($matches['value'], UnitFactory::build($matches['valueUnit'])),
-            UnitFactory::build($matches['valueUnit'])
+            UnitFactory::build($matches['targetUnit'])
         );
     }
 }
