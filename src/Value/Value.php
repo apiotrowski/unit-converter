@@ -17,7 +17,7 @@ class Value
      * @param string $value
      * @param Unit $unit
      */
-    public function __construct($value, Unit $unit)
+    public function __construct(string $value, Unit $unit)
     {
         $this->value = $value;
         $this->unit = $unit;
@@ -26,15 +26,15 @@ class Value
     /**
      * @return string
      */
-    public function getValue()
+    public function getValue() : string
     {
         return $this->value;
     }
 
     /**
-     * @return string
+     * @return Unit
      */
-    public function getUnit()
+    public function getUnit() : Unit
     {
         return $this->unit;
     }

@@ -4,13 +4,21 @@ namespace UnitConverter\Unit;
 
 interface Unit
 {
+    const CM = 'cm';
+    const IN = 'in';
+
     /**
-     * @return string
+     * @return array
      */
-    public function getName();
+    function getConvertUnitMap();
 
     /**
      * @return string
      */
-    public function __toString();
+    function getName();
+
+    /**
+     * @return string
+     */
+    function __toString();
 }

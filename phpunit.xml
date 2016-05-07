@@ -2,6 +2,7 @@
     <testsuites>
         <testsuite name="unit-converter">
             <directory>tests</directory>
+            <directory>tests\Resolver</directory>
         </testsuite>
     </testsuites>
 </phpunit>
