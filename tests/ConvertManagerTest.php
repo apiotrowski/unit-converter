@@ -23,6 +23,17 @@ class ConvertManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Value::class, $convertedValue);
     }
 
+    /**
+     * @expectedException \UnitConverter\Exception\InvalidConverterException
+     */
+    public function testConverterManagerThrowInvalidConverterExceptionWhenConverterInvalid()
+    {
+        new ConvertManager([
+            LengthConverter::class,
+            'ClassNotExists::class'
+        ]);
+    }
+
     public function rawQueryProvider()
     {
         return [

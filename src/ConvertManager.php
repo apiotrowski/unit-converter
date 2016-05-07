@@ -3,6 +3,7 @@
 namespace UnitConverter;
 
 use UnitConverter\Converter\Converter;
+use UnitConverter\Exception\InvalidConverterException;
 use UnitConverter\Exception\NotSupportedConversionException;
 use UnitConverter\Exception\NotSupportedUnitException;
 use UnitConverter\Resolver\Query;
@@ -23,15 +24,8 @@ class ConvertManager
      */
     public function __construct(array $converterClassList)
     {
-        $this->converters = $this->buildConverters($converterClassList);
+        $this->converters = $this->initConverters($converterClassList);
         $this->resolver = new QueryResolver();
-    }
-
-    public function buildConverters(array $converterClass) : array
-    {
-        return array_map(function($converterClass) {
-            return new $converterClass();
-        }, $converterClass);
     }
 
     /**
@@ -51,13 +45,27 @@ class ConvertManager
     }
 
     /**
+     * @param array $converterClass
+     * @return array
+     */
+    protected function initConverters(array $converterClass) : array
+    {
+        return array_map(function($converterClass) {
+            if (!class_exists($converterClass)) {
+                throw new InvalidConverterException($converterClass);
+            }
+            return new $converterClass();
+        }, $converterClass);
+    }
+
+    /**
      * @param Query $query
      *
      * @return Converter
      *
      * @throws NotSupportedConversionException
      */
-    protected function getSupportedConverter(Query $query)
+    protected function getSupportedConverter(Query $query) : Converter
     {
         $valueUnit = $query->getValue()->getUnit();
         $targetUnit = $query->getTargetUnit();
