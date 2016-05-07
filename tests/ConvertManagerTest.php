@@ -2,10 +2,32 @@
 
 namespace UnitConverter;
 
+use UnitConverter\Converter\LengthConverter;
+use UnitConverter\Value\Value;
+
 class ConvertManagerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testStart()
+    /**
+     * @dataProvider rawQueryProvider
+     *
+     * @param string $rawQuery
+     */
+    public function testConvertReturnConvertedValue(string $rawQuery)
     {
-        $this->assertTrue(true);
+        $convertManager = new ConvertManager([
+            LengthConverter::class
+        ]);
+
+        $convertedValue = $convertManager->convert($rawQuery);
+
+        $this->assertInstanceOf(Value::class, $convertedValue);
+    }
+
+    public function rawQueryProvider()
+    {
+        return [
+            ['10cm to in'],
+            ['10cm to ft'],
+        ];
     }
 }

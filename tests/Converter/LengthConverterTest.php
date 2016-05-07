@@ -2,7 +2,6 @@
 
 namespace UnitConverter\Converter;
 
-use UnitConverter\Resolver\Query;
 use UnitConverter\Unit\Unit;
 use UnitConverter\Unit\UnitFactory;
 use UnitConverter\Value\Value;
