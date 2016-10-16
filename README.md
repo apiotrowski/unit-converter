@@ -11,7 +11,8 @@ Converter will automatically resolve supported converter and make calculation. I
 **Value** is an Object what have two property: _Value_ (string), _Unit_ (object).
 
 ## Current list of converters:
-* Length Converter (unit: cm, in, ft)
+* Length Converter (unit: ml, km, m, cm, in, ft)
+* Weight Converter (unit: t, kg, g, dag, lbs, oz)
 
 ## How to use it
 
