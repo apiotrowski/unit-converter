@@ -3,6 +3,7 @@
 namespace UnitConverter;
 
 use UnitConverter\Converter\LengthConverter;
+use UnitConverter\Converter\WeightConverter;
 use UnitConverter\Value\Value;
 
 class ConvertManagerTest extends \PHPUnit_Framework_TestCase
@@ -15,7 +16,8 @@ class ConvertManagerTest extends \PHPUnit_Framework_TestCase
     public function testConvertReturnConvertedValue(string $rawQuery)
     {
         $convertManager = new ConvertManager([
-            LengthConverter::class
+            LengthConverter::class,
+            WeightConverter::class
         ]);
 
         $convertedValue = $convertManager->convert($rawQuery);
@@ -39,6 +41,7 @@ class ConvertManagerTest extends \PHPUnit_Framework_TestCase
         return [
             ['10cm to in'],
             ['10cm to ft'],
+            ['1kg to t']
         ];
     }
 }

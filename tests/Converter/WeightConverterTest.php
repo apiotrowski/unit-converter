@@ -8,15 +8,15 @@ use UnitConverter\Unit\UnitFactory;
 use UnitConverter\Unit\WeightUnit;
 use UnitConverter\Value\Value;
 
-class LengthConverterTest extends \PHPUnit_Framework_TestCase
+class WeightConverterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException \UnitConverter\Exception\NotSupportedConversionException
      */
     public function testConvertToThrowNotSupportedConversionExceptionWhenDifferentUnitType()
     {
-        $converter = new LengthConverter();
-        $converter->convertTo(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(WeightUnit::KILOGRAM));
+        $converter = new WeightConverter();
+        $converter->convertTo(new Value(10, UnitFactory::build(WeightUnit::KILOGRAM)), UnitFactory::build(LengthUnit::METER));
     }
 
     /**
@@ -28,7 +28,7 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function testConvertToReturnValueWhenSuccess(Value $value, Unit $targetUnit, string $expectedValue)
     {
-        $converter = new LengthConverter();
+        $converter = new WeightConverter();
         $convertedValue = $converter->convertTo($value, $targetUnit);
 
         $this->assertInstanceOf(Value::class, $convertedValue);
@@ -38,8 +38,8 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
     public function convertDataProvider()
     {
         return [
-            [ new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH), '3.93' ],
-            [ new Value(10, UnitFactory::build(LengthUnit::INCH)), UnitFactory::build(LengthUnit::CENTIMETRE), '25.44' ]
+            [ new Value(10, UnitFactory::build(WeightUnit::KILOGRAM)), UnitFactory::build(WeightUnit::TONNE), '0.01' ],
+            [ new Value(1, UnitFactory::build(WeightUnit::TONNE)), UnitFactory::build(WeightUnit::POUNDS), '2204.62' ],
         ];
     }
 }

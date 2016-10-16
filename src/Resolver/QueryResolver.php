@@ -16,7 +16,7 @@ class QueryResolver
      */
     public function resolve(string $rawQuery) : Query
     {
-        if (!preg_match('/(?<value>\d+)\s?(?<valueUnit>[a-z]{2})\s{1,}to\s{1,}(?:\?)?\s?(?<targetUnit>[a-z]{2})/', $rawQuery, $matches)) {
+        if (!preg_match('/(?<value>\d+)\s?(?<valueUnit>[a-z]{1,3})\s{1,}to\s{1,}(?:\?)?\s?(?<targetUnit>[a-z]{1,3})/', $rawQuery, $matches)) {
             throw new QueryException(sprintf('Not supported query: %s', $rawQuery));
         }
 

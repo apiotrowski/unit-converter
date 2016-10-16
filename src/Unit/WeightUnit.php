@@ -4,28 +4,31 @@ namespace UnitConverter\Unit;
 
 use UnitConverter\Exception\NotSupportedUnitException;
 
-class LengthUnit extends AbstractUnit
+class WeightUnit extends AbstractUnit
 {
-    const KILOMETER = 'km';
-    const MILE = 'mi';
-    const METER = 'm';
-    const CENTIMETRE = 'cm';
-    const INCH = 'in';
-    const FOOT = 'ft';
+    const TONNE = 't';
+    const KILOGRAM = 'kg';
+    const GRAM = 'g';
+    const DECAGRAMME = 'dag';
+    const POUNDS = 'lbs';
+    const OUNCE = 'oz';
 
     public static $unitList = [
-        self::KILOMETER,
-        self::METER,
-        self::CENTIMETRE,
-        self::INCH,
-        self::FOOT
+        self::TONNE,
+        self::KILOGRAM,
+        self::DECAGRAMME,
+        self::GRAM,
+        self::POUNDS,
+        self::OUNCE,
     ];
 
     protected static $convertUnitMap = [
-        self::METER => '0.01',
-        self::CENTIMETRE => '1',
-        self::INCH => '0.393',
-        self::FOOT => '0.0328084'
+        self::TONNE => '0.001',
+        self::KILOGRAM => '1',
+        self::DECAGRAMME => '100',
+        self::GRAM => '1000',
+        self::POUNDS => '2.20462',
+        self::OUNCE => '35.274',
     ];
 
     /**

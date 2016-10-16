@@ -34,13 +34,13 @@ class QueryResolverTest extends \PHPUnit_Framework_TestCase
     public function availableQuery()
     {
         return [
-            [ '10cm to ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
-            [ '10 cm to ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
-            [ '10 cm to ? in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
-            [ '10 cm  to ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
-            [ '10 cm to   ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
-            [ '10cm to in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
-            [ '10cm  to  in', new Query(new Value(10, UnitFactory::build(LengthUnit::CM)), UnitFactory::build(LengthUnit::IN)) ],
+            [ '10cm to ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH)) ],
+            [ '10 cm to ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH)) ],
+            [ '10 cm to ? in', new Query(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH)) ],
+            [ '10 cm  to ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH)) ],
+            [ '10 cm to   ?in', new Query(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH)) ],
+            [ '10cm to in', new Query(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH)) ],
+            [ '10cm  to  in', new Query(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH)) ],
         ];
     }
 }

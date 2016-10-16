@@ -7,7 +7,8 @@ use UnitConverter\Exception\NotSupportedUnitException;
 class UnitFactory
 {
     protected static $unitMap = [
-        LengthUnit::class
+        LengthUnit::class,
+        WeightUnit::class
     ];
 
     /**

@@ -4,18 +4,18 @@ namespace UnitConverter\Converter;
 
 use UnitConverter\Exception\NotSupportedConversionException;
 use UnitConverter\Resolver\Query;
-use UnitConverter\Unit\LengthUnit;
 use UnitConverter\Unit\Unit;
+use UnitConverter\Unit\WeightUnit;
 use UnitConverter\Value\Value;
 
-class LengthConverter extends BaseConverter
+class WeightConverter extends BaseConverter
 {
     /**
      * @return array
      */
     public function supportedUnits()
     {
-        return LengthUnit::$unitList;
+        return WeightUnit::$unitList;
     }
 
     /**
