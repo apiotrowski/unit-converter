@@ -8,7 +8,7 @@ use UnitConverter\Unit\Unit;
 use UnitConverter\Unit\WeightUnit;
 use UnitConverter\Value\Value;
 
-class WeightConverter extends BaseConverter
+class WeightConverter extends BaseConverter implements Converter
 {
     /**
      * @inheritdoc

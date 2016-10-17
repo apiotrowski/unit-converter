@@ -8,7 +8,7 @@ use UnitConverter\Unit\LengthUnit;
 use UnitConverter\Unit\Unit;
 use UnitConverter\Value\Value;
 
-class LengthConverter extends BaseConverter
+class LengthConverter extends BaseConverter implements Converter
 {
     /**
      * @inheritdoc

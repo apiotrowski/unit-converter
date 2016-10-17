@@ -7,7 +7,7 @@ use UnitConverter\Resolver\Query;
 use UnitConverter\Unit\Unit;
 use UnitConverter\Value\Value;
 
-abstract class BaseConverter implements Converter
+abstract class BaseConverter
 {
     /**
      * @inheritdoc
