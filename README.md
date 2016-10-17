@@ -18,7 +18,7 @@ If you want to convert values not using Convert Manager you can do it directly b
 (new LengthConverter())->convertTo(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH));
 ```
 
-## Current list of supported converters:
+## Current converters list implemented inside:
 * Length Converter (unit: ml, km, m, cm, in, ft)
 * Weight Converter (unit: t, kg, g, dag, lbs, oz)
 
