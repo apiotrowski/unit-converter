@@ -33,7 +33,7 @@ $convertedValue = $convertManager->convert('10cm to ?in');
 
 After you call convert() function all magic happened inside. At the beginning it resolve the query to php form, choose what converter should be used, and in the end converts value to destination unit.
 
-In the output ($convertedValue) you get _Value_ object with results. 
+In the output ($convertedValue) you get _Value_ object with the result. 
 
 To calculation values tool is use [BC Math library](http://php.net/manual/en/ref.bc.php). 
  
