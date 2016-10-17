@@ -55,9 +55,8 @@ class ConvertManager
                 throw new InvalidConverterException($converterClass);
             }
 
-            $implementClass = class_implements($converterClass);
-            if (!in_array(Converter::class, $implementClass)) {
-                throw new \LogicException('An error occurred. Your converter not implements Converter interface.');
+            if (!in_array(Converter::class, class_implements($converterClass))) {
+                throw new \LogicException('An error occurred. Your converter must implements Converter interface.');
             }
 
             return new $converterClass();
