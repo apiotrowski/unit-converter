@@ -12,7 +12,7 @@ Converter will automatically resolve supported converter and make calculation. I
 
 ## Manual conversion
 
-To convert values with not use Convert Manager you should call following snippet:
+If you want to convert values not using Convert Manager you can do it directly by calling following snippet:
 
 > (new LengthConverter())->convertTo(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH));
 
