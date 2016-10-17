@@ -45,9 +45,9 @@ To Extend Converter User should:
  
 1. Create new Converter class and Unit class,
 
-2. Add new create Unit class to list of the supported units in UnitFactory class,
+2. Add new created Unit class to list of the supported units in the UnitFactory class,
 
-3. During initialization of ConvertManager, add you converter class to list of supported converters.
+3. During initialization of ConvertManager, add your converter class to list of supported converters.
 
 ## Supported PHP Versions
 * PHP 7.0 with installed BC Math Extension
