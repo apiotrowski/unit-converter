@@ -12,6 +12,11 @@ abstract class BaseConverter
     /**
      * @inheritdoc
      */
+    abstract function supportedUnits();
+
+    /**
+     * @inheritdoc
+     */
     public function isSupported(Unit $sourceUnit, Unit $targetUnit) : bool
     {
         if (!in_array($sourceUnit->getName(), $this->supportedUnits()) || !in_array($targetUnit->getName(), $this->supportedUnits())) {
