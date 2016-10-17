@@ -11,16 +11,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "UnitConverter\\": "src/"
-    }
-  },
-  "config": {
-    "platform": {
-      "php": "~7.0"
+      "UnitConverter\\": "src/",
+      "UnitConverter\\Tests\\": "tests/"
     }
   },
   "require": {
-    "php": "~7.0"  
+    "php": "~7.0"
   },
   "require-dev": {
     "phpunit/phpunit": "5.3.*"

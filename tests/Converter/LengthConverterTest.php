@@ -1,7 +1,8 @@
 <?php
 
-namespace UnitConverter\Converter;
+namespace UnitConverter\Tests\Converter;
 
+use UnitConverter\Converter\LengthConverter;
 use UnitConverter\Unit\LengthUnit;
 use UnitConverter\Unit\Unit;
 use UnitConverter\Unit\UnitFactory;

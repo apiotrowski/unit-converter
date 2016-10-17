@@ -1,7 +1,9 @@
 <?php
 
-namespace UnitConverter\Resolver;
+namespace UnitConverter\Tests\Resolver;
 
+use UnitConverter\Resolver\Query;
+use UnitConverter\Resolver\QueryResolver;
 use UnitConverter\Unit\LengthUnit;
 use UnitConverter\Unit\UnitFactory;
 use UnitConverter\Value\Value;

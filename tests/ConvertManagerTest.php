@@ -4,6 +4,7 @@ namespace UnitConverter;
 
 use UnitConverter\Converter\LengthConverter;
 use UnitConverter\Converter\WeightConverter;
+use UnitConverter\Tests\Converters\InvalidConverter;
 use UnitConverter\Value\Value;
 
 class ConvertManagerTest extends \PHPUnit_Framework_TestCase
@@ -34,6 +35,14 @@ class ConvertManagerTest extends \PHPUnit_Framework_TestCase
             LengthConverter::class,
             'ClassNotExists::class'
         ]);
+    }
+
+    /**
+     * @expectedException \LogicException
+     */
+    public function testConvertManagerThrowLogicExceptionWhenUserTryToUseConverterWhatNotImplementConverterInterface()
+    {
+        new ConvertManager([InvalidConverter::class]);
     }
 
     public function rawQueryProvider()
