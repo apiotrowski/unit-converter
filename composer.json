@@ -1,6 +1,6 @@
 {
   "name": "apiotrowski/unit-converter",
-  "description": "Unit converter it is php service which converts values based on raw string query.",
+  "description": "Unit converter it is service which converts values based on raw string query.",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
