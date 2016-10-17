@@ -12,10 +12,14 @@ use UnitConverter\Value\Value;
 
 class ConvertManager
 {
-    /** @var Converter[]  */
+    /**
+     * @var Converter[]
+     */
     private $converters;
 
-    /** @var QueryResolver */
+    /**
+     * @var QueryResolver
+     */
     private $resolver;
 
     /**

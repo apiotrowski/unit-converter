@@ -7,9 +7,14 @@ use UnitConverter\Value\Value;
 
 class Query
 {
-    /** @var Value */
+    /**
+     * @var Value
+     */
     private $value;
-    /** @var Unit */
+
+    /**
+     * @var Unit
+     */
     private $targetUnit;
 
     /**

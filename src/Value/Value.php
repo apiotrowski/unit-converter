@@ -6,10 +6,14 @@ use UnitConverter\Unit\Unit;
 
 class Value
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     private $value;
 
-    /** @var Unit */
+    /**
+     * @var Unit
+     */
     private $unit;
 
     /**

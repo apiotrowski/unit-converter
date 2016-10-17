@@ -4,9 +4,14 @@ namespace UnitConverter\Unit;
 
 abstract class AbstractUnit implements Unit
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @return array
+     */
     abstract function getConvertUnitMap();
 
     /**
