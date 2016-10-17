@@ -43,11 +43,11 @@ Tool are tested in [PHPUnit](https://phpunit.de/), so everything should work Wit
 
 To Extend Converter User should:
  
-1. Add new Converter Class what implement Converter Interface.
+1. Create new Converter class and Unit class,
 
-2. Add new Converter Class in the UnitFactory class.
+2. Add new create Unit class to list of the supported units in UnitFactory class,
 
-3. During initializing ConvertManager put new Class as argument in convertClassList.
+3. During initialization of ConvertManager, add you converter class to list of supported converters.
 
 ## Supported PHP Versions
 * PHP 7.0 with installed BC Math Extension
