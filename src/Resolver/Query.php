@@ -26,7 +26,7 @@ class Query
     /**
      * @return Value
      */
-    public function getValue()
+    public function getValue() : Value
     {
         return $this->value;
     }
@@ -34,7 +34,7 @@ class Query
     /**
      * @return Unit
      */
-    public function getTargetUnit()
+    public function getTargetUnit() : Unit
     {
         return $this->targetUnit;
     }

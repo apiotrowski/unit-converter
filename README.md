@@ -10,6 +10,12 @@ Converter will automatically resolve supported converter and make calculation. I
  
 **Value** is an Object what have two property: _Value_ (string), _Unit_ (object).
 
+## Manual conversion
+
+To convert values with not use Convert Manager you should call following snippet:
+
+> (new LengthConverter())->convertTo(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH));
+
 ## Current list of converters:
 * Length Converter (unit: ml, km, m, cm, in, ft)
 * Weight Converter (unit: t, kg, g, dag, lbs, oz)
@@ -19,7 +25,7 @@ Converter will automatically resolve supported converter and make calculation. I
 Unit Converter is really simple to use and easy to extend. In a bellow example I show how to use this tool.
 
 ```php
-$convertManager = new ConvertManager([ \UnitConverter\Converter\LengthConverter ]);
+$convertManager = new ConvertManager([ LengthConverter::class ]);
 $convertedValue = $convertManager->convert('10cm to ?in');
 
 ```

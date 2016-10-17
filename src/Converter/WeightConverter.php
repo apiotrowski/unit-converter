@@ -13,7 +13,7 @@ class WeightConverter extends BaseConverter
     /**
      * @return array
      */
-    public function supportedUnits()
+    public function supportedUnits() : array
     {
         return WeightUnit::$unitList;
     }
@@ -26,7 +26,7 @@ class WeightConverter extends BaseConverter
      *
      * @throws NotSupportedConversionException
      */
-    public function convertTo(Value $value, Unit $targetUnit)
+    public function convertTo(Value $value, Unit $targetUnit) : Value
     {
         if (false === $this->isSupported($value->getUnit(), $targetUnit)) {
             throw new NotSupportedConversionException($value->getUnit(), $targetUnit);
@@ -42,7 +42,7 @@ class WeightConverter extends BaseConverter
      *
      * @throws NotSupportedConversionException
      */
-    public function convertFromQuery(Query $query)
+    public function convertFromQuery(Query $query) : Value
     {
         return $this->convertTo($query->getValue(), $query->getTargetUnit());
     }
