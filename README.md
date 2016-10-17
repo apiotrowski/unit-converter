@@ -24,16 +24,20 @@ If you want to convert values not using Convert Manager you can do it directly b
 
 ## How to use it
 
-Unit Converter is really simple to use and easy to extend. In a bellow example I show how to use this tool.
+Unit Converter is really simple to use and easy to extend. In a bellow example I show how to use this tool. 
 
 ```php
-$convertManager = new ConvertManager([ LengthConverter::class ]);
+$convertManager = new ConvertManager([ LengthConverter::class, WeightConverter::class ]);
 $convertedValue = $convertManager->convert('10cm to ?in');
 ```
 
-In the $convertedValue it is calculated Value based on raw query string. To calculating values tool is use [BC Math library](http://php.net/manual/en/ref.bc.php). 
+After you call convert() function all magic happened inside. At the beginning it resolve the query to php form, choose what converter should be used, and in the end converts value to destination unit.
+
+In the output ($convertedValue) you get _Value_ object with results. 
+
+To calculation values tool is use [BC Math library](http://php.net/manual/en/ref.bc.php). 
  
-Tool are tested in [PHPUnit](https://phpunit.de/), so everything should work properly.
+Tool are tested in [PHPUnit](https://phpunit.de/), so everything should work Without any mistake.
 
 ## How to extend Unit Converter
 
