@@ -14,7 +14,9 @@ Converter will automatically resolve supported converter and make calculation. I
 
 If you want to convert values not using Convert Manager you can do it directly by calling following snippet:
 
-> (new LengthConverter())->convertTo(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH));
+```php
+(new LengthConverter())->convertTo(new Value(10, UnitFactory::build(LengthUnit::CENTIMETRE)), UnitFactory::build(LengthUnit::INCH));
+```
 
 ## Current list of converters:
 * Length Converter (unit: ml, km, m, cm, in, ft)
@@ -27,7 +29,6 @@ Unit Converter is really simple to use and easy to extend. In a bellow example I
 ```php
 $convertManager = new ConvertManager([ LengthConverter::class ]);
 $convertedValue = $convertManager->convert('10cm to ?in');
-
 ```
 
 In the $convertedValue it is calculated Value based on raw query string. To calculating values tool is use [BC Math library](http://php.net/manual/en/ref.bc.php). 
