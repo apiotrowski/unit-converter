@@ -2,13 +2,16 @@
 
 namespace UnitConverter\Tests\Resolver;
 
+use PHPUnit\Framework\TestCase;
+use UnitConverter\Exception\NotSupportedUnitException;
+use UnitConverter\Exception\QueryException;
 use UnitConverter\Resolver\Query;
 use UnitConverter\Resolver\QueryResolver;
 use UnitConverter\Unit\LengthUnit;
 use UnitConverter\Unit\UnitFactory;
 use UnitConverter\Value\Value;
 
-class QueryResolverTest extends \PHPUnit_Framework_TestCase
+class QueryResolverTest extends TestCase
 {
     /** @var QueryResolver */
     private $queryResolver;
@@ -23,6 +26,9 @@ class QueryResolverTest extends \PHPUnit_Framework_TestCase
      *
      * @param string $rawQuery
      * @param Query $expectedQuery
+     *
+     * @throws NotSupportedUnitException
+     * @throws QueryException
      */
     public function testResolveMethodReturnValueAndTarget(string $rawQuery, Query $expectedQuery)
     {
@@ -33,6 +39,11 @@ class QueryResolverTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedQuery, $query);
     }
 
+    /**
+     * @return array
+     *
+     * @throws NotSupportedUnitException
+     */
     public function availableQuery()
     {
         return [

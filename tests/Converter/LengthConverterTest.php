@@ -2,6 +2,7 @@
 
 namespace UnitConverter\Tests\Converter;
 
+use PHPUnit\Framework\TestCase;
 use UnitConverter\Converter\LengthConverter;
 use UnitConverter\Unit\LengthUnit;
 use UnitConverter\Unit\Unit;
@@ -9,10 +10,12 @@ use UnitConverter\Unit\UnitFactory;
 use UnitConverter\Unit\WeightUnit;
 use UnitConverter\Value\Value;
 
-class LengthConverterTest extends \PHPUnit_Framework_TestCase
+class LengthConverterTest extends TestCase
 {
     /**
      * @expectedException \UnitConverter\Exception\NotSupportedConversionException
+     *
+     * @throws \UnitConverter\Exception\NotSupportedUnitException
      */
     public function testConvertToThrowNotSupportedConversionExceptionWhenDifferentUnitType()
     {
@@ -26,6 +29,8 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
      * @param Value $value
      * @param Unit $targetUnit
      * @param string $expectedValue
+     *
+     * @throws \UnitConverter\Exception\NotSupportedConversionException
      */
     public function testConvertToReturnValueWhenSuccess(Value $value, Unit $targetUnit, string $expectedValue)
     {
@@ -36,6 +41,11 @@ class LengthConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedValue, $convertedValue->getValue());
     }
 
+    /**
+     * @return array
+     *
+     * @throws \UnitConverter\Exception\NotSupportedUnitException
+     */
     public function convertDataProvider()
     {
         return [

@@ -19,7 +19,7 @@ abstract class BaseConverter
      */
     public function isSupported(Unit $sourceUnit, Unit $targetUnit) : bool
     {
-        if (!in_array($sourceUnit->getName(), $this->supportedUnits()) || !in_array($targetUnit->getName(), $this->supportedUnits())) {
+        if (false === in_array($sourceUnit->getName(), $this->supportedUnits()) || false === in_array($targetUnit->getName(), $this->supportedUnits())) {
             return false;
         }
         return true;
@@ -27,6 +27,8 @@ abstract class BaseConverter
 
     /**
      * @inheritdoc
+     *
+     * @throws NotSupportedConversionException
      */
     public function convertTo(Value $value, Unit $targetUnit) : Value
     {
@@ -39,6 +41,8 @@ abstract class BaseConverter
 
     /**
      * @inheritdoc
+     *
+     * @throws NotSupportedConversionException
      */
     public function convertFromQuery(Query $query) : Value
     {

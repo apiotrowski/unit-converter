@@ -29,7 +29,6 @@ class LengthUnit extends AbstractUnit
     ];
 
     /**
-     * LengthUnit constructor.
      * @param string $unitName
      * @throws NotSupportedUnitException
      */

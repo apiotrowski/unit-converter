@@ -18,7 +18,6 @@ class Query
     private $targetUnit;
 
     /**
-     * Query constructor.
      * @param Value $value
      * @param Unit $targetUnit
      */

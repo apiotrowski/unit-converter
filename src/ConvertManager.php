@@ -3,7 +3,6 @@
 namespace UnitConverter;
 
 use UnitConverter\Converter\Converter;
-use UnitConverter\Exception\InvalidConverterException;
 use UnitConverter\Exception\NotSupportedConversionException;
 use UnitConverter\Exception\NotSupportedUnitException;
 use UnitConverter\Resolver\Query;
@@ -20,16 +19,16 @@ class ConvertManager
     /**
      * @var QueryResolver
      */
-    private $resolver;
+    private $queryResolver;
 
     /**
-     * ConvertManager constructor.
-     * @param string[] $converterClassList
+     * @param Converter[] $converters
+     * @param QueryResolver $queryResolver
      */
-    public function __construct(array $converterClassList)
+    public function __construct(array $converters, QueryResolver $queryResolver)
     {
-        $this->converters = $this->initConverters($converterClassList);
-        $this->resolver = new QueryResolver();
+        $this->converters = $converters;
+        $this->queryResolver = $queryResolver;
     }
 
     /**
@@ -37,34 +36,17 @@ class ConvertManager
      *
      * @return Value
      *
+     * @throws Exception\QueryException
+     * @throws NotSupportedConversionException
      * @throws NotSupportedUnitException
      */
     public function convert(string $rawQuery) : Value
     {
-        $query = $this->resolver->resolve($rawQuery);
+        $query = $this->queryResolver->resolve($rawQuery);
 
         $converter = $this->getSupportedConverter($query);
         
         return $converter->convertFromQuery($query);
-    }
-
-    /**
-     * @param array $converterClass
-     * @return array
-     */
-    protected function initConverters(array $converterClass) : array
-    {
-        return array_map(function($converterClass) {
-            if (!class_exists($converterClass)) {
-                throw new InvalidConverterException($converterClass);
-            }
-
-            if (!in_array(Converter::class, class_implements($converterClass))) {
-                throw new \LogicException('An error occurred. Your converter must implements Converter interface.');
-            }
-
-            return new $converterClass();
-        }, $converterClass);
     }
 
     /**
