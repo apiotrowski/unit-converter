@@ -27,7 +27,7 @@ If you want to convert values not using Convert Manager you can do it directly b
 Unit Converter is really simple to use and easy to extend. In a bellow example I show how to use this tool. 
 
 ```php
-$convertManager = new ConvertManager([ new LengthConverter(), new WeightConverter() ]);
+$convertManager = new ConvertManager(new ArrayCollection([ new LengthConverter(), new WeightConverter() ]));
 $convertedValue = $convertManager->convert('10cm to ?in');
 ```
 
