@@ -2,6 +2,8 @@
 
 namespace UnitConverter;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use PHPUnit\Framework\TestCase;
 use UnitConverter\Converter\LengthConverter;
 use UnitConverter\Converter\WeightConverter;
@@ -20,10 +22,12 @@ class ConvertManagerTest extends TestCase
      */
     public function testConvertReturnConvertedValue(string $rawQuery)
     {
-        $convertManager = new ConvertManager([
+        $converters = new ArrayCollection([
             new LengthConverter(),
             new WeightConverter()
-        ], new QueryResolver());
+        ]);
+
+        $convertManager = new ConvertManager($converters, new QueryResolver());
 
         $convertedValue = $convertManager->convert($rawQuery);
 
