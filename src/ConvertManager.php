@@ -2,7 +2,6 @@
 
 namespace UnitConverter;
 
-use Doctrine\Common\Collections\Collection;
 use UnitConverter\Converter\Converter;
 use UnitConverter\Exception\NotSupportedConversionException;
 use UnitConverter\Exception\NotSupportedUnitException;
@@ -23,10 +22,10 @@ class ConvertManager
     private $queryResolver;
 
     /**
-     * @param Converter[]|Collection $converters
+     * @param Converter[]|iterable $converters
      * @param QueryResolver $queryResolver
      */
-    public function __construct(Collection $converters, QueryResolver $queryResolver)
+    public function __construct(iterable $converters, QueryResolver $queryResolver)
     {
         $this->converters = $converters;
         $this->queryResolver = $queryResolver;
@@ -58,17 +57,15 @@ class ConvertManager
      */
     protected function getSupportedConverter(Query $query) : Converter
     {
-        $supportedConverters = $this->converters->filter(function (Converter $converter) use ($query) {
-            return true === $converter->isSupported($query->getValue()->getUnit(), $query->getTargetUnit());
-        });
-
-        if (true === $supportedConverters->isEmpty()) {
-            throw new NotSupportedConversionException(
-                $query->getValue()->getUnit(),
-                $query->getTargetUnit()
-            );
+        foreach ($this->converters as $converter) {
+            if (true === $converter->isSupported($query->getValue()->getUnit(), $query->getTargetUnit())) {
+                return $converter;
+            }
         }
 
-        return $supportedConverters->first();
+        throw new NotSupportedConversionException(
+            $query->getValue()->getUnit(),
+            $query->getTargetUnit()
+        );
     }
 }
