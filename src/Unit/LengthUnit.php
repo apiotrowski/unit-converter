@@ -15,6 +15,7 @@ class LengthUnit extends AbstractUnit
 
     public static $unitList = [
         self::KILOMETER,
+        self::MILE,
         self::METER,
         self::CENTIMETRE,
         self::INCH,
@@ -22,6 +23,8 @@ class LengthUnit extends AbstractUnit
     ];
 
     protected static $convertUnitMap = [
+        self::KILOMETER => '0.00001',
+        self::MILE => '0.0000062137',
         self::METER => '0.01',
         self::CENTIMETRE => '1',
         self::INCH => '0.393',
